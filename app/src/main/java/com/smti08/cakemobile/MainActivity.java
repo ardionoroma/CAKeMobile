@@ -6,6 +6,7 @@ import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -22,23 +23,35 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
+    RecyclerView recyclerView, recyclerView2;
     AdapterMenu adapterMenu;
+    AdapterPerusahaan adapterPerusahaan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.lihatSemua).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, CategoryActivity.class);
+                startActivity(i);
+            }
+        });
         recyclerView = findViewById(R.id.recyclerView);
+        recyclerView2 = findViewById(R.id.recyclerView2);
         GridLayoutManager glm = new GridLayoutManager(getApplicationContext(), 3);
         recyclerView.setPadding(10, 10, 10, 10);
+        recyclerView2.setPadding(10, 10, 10, 10);
         SpacesItemDecoration space = new SpacesItemDecoration(20);
         recyclerView.addItemDecoration(space);
+        recyclerView2.addItemDecoration(space);
         recyclerView.setLayoutManager(glm);
-
-
+        recyclerView2.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
 
         adapterMenu = new AdapterMenu();
+        adapterPerusahaan = new AdapterPerusahaan();
         recyclerView.setAdapter(adapterMenu);
+        recyclerView2.setAdapter(adapterPerusahaan);
     }
 
     public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
@@ -67,6 +80,70 @@ public class MainActivity extends AppCompatActivity {
 //            this.img = img;
 //        }
 //    }
+
+    class AdapterPerusahaan extends RecyclerView.Adapter<AdapterPerusahaan.viewHolder>{
+
+        AdapterPerusahaan(){
+            notifyDataSetChanged();
+        }
+
+        @Override
+        public AdapterPerusahaan.viewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View itemLayout = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_company, null);
+//            View itemLayout = getLayoutInflater().inflate(R.layout.item_menu, parent, false);
+            return new viewHolder(itemLayout);
+        }
+
+        @Override
+        public void onBindViewHolder(viewHolder holder, int position) {
+            switch(position){
+                case 0:
+                    holder.ikon.setImageResource(R.drawable.adhi);
+                    holder.kode.setText("ADHI");
+                    holder.harga.setText("Rp 1.870,00");
+                    break;
+                case 1:
+                    holder.ikon.setImageResource(R.drawable.bri);
+                    holder.kode.setText("BBRI");
+                    holder.harga.setText("Rp 3.160,00");
+                    break;
+                case 2:
+                    holder.ikon.setImageResource(R.drawable.telkom);
+                    holder.kode.setText("TLKM");
+                    holder.harga.setText("Rp 3.750,00");
+                    break;
+                case 3:
+                    holder.ikon.setImageResource(R.drawable.unilever);
+                    holder.kode.setText("UNVR");
+                    holder.harga.setText("Rp 46.350,00");
+                    break;
+            }
+        }
+
+        @Override
+        public int getItemCount() {
+            return 4;
+        }
+
+        class viewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+            TextView kode, harga;
+            ImageView ikon;
+
+            public viewHolder(View itemView){
+                super(itemView);
+                itemView.setOnClickListener(this);
+                ikon = itemView.findViewById(R.id.ikon);
+                kode = itemView.findViewById(R.id.kode);
+                harga = itemView.findViewById(R.id.harga);
+            }
+
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, CategoryActivity.class);
+                startActivity(i);
+            }
+        }
+    }
 
     class AdapterMenu extends RecyclerView.Adapter<AdapterMenu.viewHolder>{
 
