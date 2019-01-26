@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(space);
         recyclerView2.addItemDecoration(space);
         recyclerView.setLayoutManager(glm);
-        recyclerView2.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
+        recyclerView2.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         adapterMenu = new AdapterMenu();
         adapterPerusahaan = new AdapterPerusahaan();
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, CategoryActivity.class);
+                Intent i = new Intent(MainActivity.this, DetailActivity.class);
                 startActivity(i);
             }
         }

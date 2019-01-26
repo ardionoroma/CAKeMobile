@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/ikon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:padding="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/adhi" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/ikon"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingRight="30dp">
+            <TextView
+                android:id="@+id/nama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Perusahaan"
+                android:layout_gravity="left"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/deskripsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi Perusahaan Deskripsi Perusahaan Deskripsi Perusahaan Deskripsi Perusahaan Deskripsi Perusahaan Deskripsi Perusahaan Deskripsi Perusahaan Deskripsi Perusahaan"
+                android:layout_gravity="left"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:maxLength="75"
+                android:maxLines="2"
+                android:maxWidth="200dp"/>
+            <TextView
+                android:id="@+id/harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp xxx"
+                android:layout_gravity="left"
+                android:textSize="11sp"
+                android:textColor="@color/colorPrimary"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
