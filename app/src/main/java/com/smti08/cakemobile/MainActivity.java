@@ -1,5 +1,6 @@
 package com.smti08.cakemobile;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.media.Image;
@@ -26,10 +27,12 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView, recyclerView2;
     AdapterMenu adapterMenu;
     AdapterPerusahaan adapterPerusahaan;
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        new GetCompany(this, this, progressDialog);
         findViewById(R.id.lihatSemua).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
