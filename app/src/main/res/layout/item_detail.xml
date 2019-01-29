@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="Rp 3.750,00"
                 android:layout_gravity="left"
-                android:textSize="34sp"
+                android:textSize="28sp"
                 android:fontFamily="sans-serif"
                 android:textStyle="bold"
                 android:textColor="#272D33"

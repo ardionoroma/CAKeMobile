@@ -120,13 +120,15 @@ public class GetCompany {
                                     idSector = Integer.parseInt(jsonObjectCompany.getString("id_sector"));
                                     updatedUsing = jsonObjectCompany.getString("updated_using");
                                     updatedAt = jsonObjectCompany.getString("updated_at");
-                                    sql = "INSERT INTO companyprint (id_company, name_company, desc_company, image, stock_price, " +
+                                    sql = "INSERT INTO companyprint (id, id_company, name_company, desc_company, image, stock_price, " +
                                             "beta, using_dollar, current_asset1, current_asset2, current_l1, current_l2, " +
                                             "outstanding_share, total_equity, net_income, capital_expenditure, depreciation, cwc, " +
                                             "dividend_payment, capm, dividend_payout, retention_ratio, total_asset, total_l12, " +
                                             "interest_expense, ebit, fcff, cost_debt, wacc, return_capital, expected_growth_fcff, " +
                                             "intrinsik_fcff, eps, new_debt_issued, debt_repayment, fcfe, return_equity, " +
-                                            "expected_growth_fcfe, intrinsik_fcfe, info, id_sector, updated_using, updated_at) VALUES ('" +
+                                            "expected_growth_fcfe, intrinsik_fcfe, info, id_sector, updated_using, updated_at) VALUES (" +
+                                            i +
+                                            ",'" +
                                             idCompany +
                                             "','" +
                                             namaCompany +

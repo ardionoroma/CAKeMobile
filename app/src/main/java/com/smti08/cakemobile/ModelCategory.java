@@ -1,20 +1,23 @@
 package com.smti08.cakemobile;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ModelCategory {
+public class ModelCategory implements Serializable {
     private ArrayList<ModelCategory> modelCategory = new ArrayList<>();
     private String id_company, name_company, desc_company, image, stock_price, current_asset1, current_asset2;
     private String current_l1, current_l2, outstanding_share, total_equity, net_income, capital_expenditure, depreciation, cwc;
     private String dividend_payment, capm, dividend_payout, retention_ratio, total_asset, total_l12, interest_expense, ebit, fcff;
     private String cost_debt, wacc, return_capital, expected_growth_fcff, intrinsik_fcff, eps, new_debt_issued, debt_repayment, fcfe;
     private String return_equity, expected_growth_fcfe, intrinsik_fcfe, info, updated_using, updated_at;
-    private int using_dollar, id_sector;
+    private int id, using_dollar, id_sector;
     private float beta;
 
     public ModelCategory() {
     }
 
+    public int getID(){ return id; }
+    public void setId(int id) { this.id = id; }
     public String getId_company() { return id_company; }
     public void setId_company(String id_company) { this.id_company = id_company; }
     public String getName_company() { return name_company; }

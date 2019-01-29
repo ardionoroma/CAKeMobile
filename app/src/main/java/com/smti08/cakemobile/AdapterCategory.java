@@ -3,6 +3,7 @@ package com.smti08.cakemobile;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.ViewHolder> {
-    private List<ModelCategory> modelCategory = new ArrayList<>();
+    private List<ModelCategory> modelCategory;
     Context context;
     SharedPreferences sp, sharedPreferences;
     String id_company, name_company, desc_company, image, stock_price, current_asset1, current_asset2, current_l1, current_l2,
@@ -43,9 +44,18 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(AdapterCategory.ViewHolder holder, int position) {
+    public void onBindViewHolder(AdapterCategory.ViewHolder holder, final int position) {
         Log.d("DEBUG_", "Bind ViewHolder");
         final ModelCategory modelcategory = modelCategory.get(position);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, DetailActivity.class);
+                i.putExtra("x", modelcategory);
+                context.startActivity(i);
+            }
+        });
         holder.nama.setText(modelcategory.getName_company());
         holder.deskripsi.setText(modelcategory.getDesc_company());
         holder.harga.setText(modelcategory.getStock_price());
@@ -57,23 +67,16 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.ViewHo
         return modelCategory.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder{
         TextView nama, deskripsi, harga;
         ImageView ikon;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
             ikon = itemView.findViewById(R.id.ikon);
             nama = itemView.findViewById(R.id.nama);
             deskripsi = itemView.findViewById(R.id.deskripsi);
             harga = itemView.findViewById(R.id.harga);
-        }
-
-        @Override
-        public void onClick(View view) {
-            Intent i = new Intent(context, DetailActivity.class);
-            context.startActivity(i);
         }
     }
 }

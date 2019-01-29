@@ -9,7 +9,7 @@ import android.util.Log;
 public class DataCenter extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "cakemobile.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     public DataCenter(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -17,7 +17,7 @@ public class DataCenter extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql_companyprint = "create table companyprint(id_company text primary key, name_company text, " +
+        String sql_companyprint = "create table companyprint(id integer primary key, id_company text, name_company text, " +
                 "desc_company text, image text, stock_price text, beta real, using_dollar integer, current_asset1 text, " +
                 "current_asset2 text, current_l1 text, current_l2 text, outstanding_share text, total_equity text, net_income text, " +
                 "capital_expenditure text, depreciation text, cwc text, dividend_payment text, capm text, dividend_payout text, " +

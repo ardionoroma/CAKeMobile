@@ -3,4 +3,8 @@
     <color name="colorPrimary">#009FFD</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="Undervalue">#50E3C2</color>
+    <color name="Overvalue">#FF0000</color>
+    <color name="Equal">#00FF00</color>
+    <color name="White">#FFFFFF</color>
 </resources>
