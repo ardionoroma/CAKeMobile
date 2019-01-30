@@ -18,12 +18,15 @@ import android.widget.ImageView;
 import android.widget.Space;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+//    android.support.v7.widget.Toolbar toolbar;
+//    TextView judul;
     RecyclerView recyclerView, recyclerView2;
     AdapterMenu adapterMenu;
     AdapterPerusahaan adapterPerusahaan;
@@ -32,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        toolbar = findViewById(R.id.tulbar);
+//        judul = toolbar.findViewById(R.id.judul);
         new GetCompany(this, this, progressDialog);
         findViewById(R.id.lihatSemua).setOnClickListener(new View.OnClickListener() {
             @Override
