@@ -128,23 +128,23 @@ public class MainActivity extends AppCompatActivity {
             return 4;
         }
 
-        class viewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        class viewHolder extends RecyclerView.ViewHolder{
             TextView kode, harga;
             ImageView ikon;
 
             public viewHolder(View itemView){
                 super(itemView);
-                itemView.setOnClickListener(this);
+//                itemView.setOnClickListener(this);
                 ikon = itemView.findViewById(R.id.ikon);
                 kode = itemView.findViewById(R.id.kode);
                 harga = itemView.findViewById(R.id.harga);
             }
 
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, DetailActivity.class);
-                startActivity(i);
-            }
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(MainActivity.this, DetailActivity.class);
+//                startActivity(i);
+//            }
         }
     }
 

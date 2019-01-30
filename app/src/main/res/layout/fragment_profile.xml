@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context="com.smti08.cakemobile.KeyStats">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_margin="5pt"
+        android:padding="5pt">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Latar Belakang Perusahaan"
+            android:textSize="14sp"
+            android:paddingBottom="7.5pt"
+            android:textColor="#272D33"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/teks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Latar Belakang Perusahaan"
+            android:textSize="14sp"
+            android:paddingBottom="7.5pt"
+            android:textColor="#152935" />
+        <View style="@style/dividerHorizontal"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saham Sejenis"
+            android:textSize="14sp"
+            android:paddingTop="7.5pt"
+            android:paddingBottom="7.5pt"
+            android:textColor="#272D33"
+            android:textStyle="bold"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</ScrollView>
