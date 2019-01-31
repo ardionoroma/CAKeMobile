@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.squareup.picasso.Picasso;
 
@@ -27,6 +28,9 @@ import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
 
+    android.support.v7.widget.Toolbar toolbar;
+    TextView judul, nama;
+    ImageView back;
     RecyclerView recyclerView;
     AdapterDetail adapterDetail;
     ModelCategory modelCategory = new ModelCategory();
@@ -38,7 +42,19 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        toolbar = findViewById(R.id.tulbar);
+        judul = toolbar.findViewById(R.id.judul);
+        nama = toolbar.findViewById(R.id.nama);
+        back = toolbar.findViewById(R.id.back);
         modelCategory = (ModelCategory) getIntent().getSerializableExtra("x");
+        judul.setText(modelCategory.getId_company());
+        nama.setText(modelCategory.getName_company());
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 //        bundle.putString("x", modelCategory.getName_company());
         bundle.putSerializable("x", modelCategory);
         recyclerView = findViewById(R.id.recyclerView);

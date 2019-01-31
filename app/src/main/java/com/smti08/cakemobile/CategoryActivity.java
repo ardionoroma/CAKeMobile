@@ -21,6 +21,9 @@ import java.util.List;
 
 public class CategoryActivity extends AppCompatActivity {
 
+    android.support.v7.widget.Toolbar toolbar;
+    TextView judul, jumlah;
+    ImageView back;
     RecyclerView recyclerView;
 //    AdapterDaftar adapterDaftar;
     AdapterCategory adapter;
@@ -28,11 +31,27 @@ public class CategoryActivity extends AppCompatActivity {
     private DataCenter dbHelper;
     protected Cursor cursor;
     List<ModelCategory> penampung_utama;
+    int kategori;
+    String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+        toolbar = findViewById(R.id.tulbar);
+        judul = toolbar.findViewById(R.id.judul);
+        jumlah = toolbar.findViewById(R.id.jumlah);
+        back = toolbar.findViewById(R.id.back);
+        kategori = getIntent().getIntExtra("kategori", 0);
+        title = getIntent().getStringExtra("judul");
+        title = title.replace("\n", " ");
+        judul.setText(title);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         penampung_utama = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setPadding(10,10,10,10);
@@ -40,7 +59,7 @@ public class CategoryActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(space);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        bacaData();
+        bacaData(kategori);
     }
 
     public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
@@ -175,10 +194,14 @@ public class CategoryActivity extends AppCompatActivity {
 //        }
 //    }
 
-    private void bacaData(){
+    private void bacaData(int kategori){
         dbHelper = new DataCenter(this);
         dbaca = dbHelper.getReadableDatabase();
-        cursor = dbaca.rawQuery("SELECT * FROM companyprint", null);
+        if (kategori == 0){
+            cursor = dbaca.rawQuery("SELECT * FROM companyprint", null);
+        } else {
+            cursor = dbaca.rawQuery("SELECT * FROM companyprint WHERE id_sector="+kategori, null);
+        }
         cursor.moveToFirst();
 
         for (int i = 0; i < cursor.getCount(); i++){
@@ -232,5 +255,6 @@ public class CategoryActivity extends AppCompatActivity {
         adapter = new AdapterCategory(this, penampung_utama);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+        jumlah.setText(String.valueOf(adapter.getItemCount())+jumlah.getText());
     }
 }

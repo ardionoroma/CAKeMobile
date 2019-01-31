@@ -13,7 +13,7 @@ public class KeyStats extends android.support.v4.app.Fragment {
 
     ModelCategory modelCategory = new ModelCategory();
     TextView ket, beta, growthRates, currentAsset, currentLiabilities, workingCapital, totalLiabilities, outstandingShare, totalEquity,
-    depreciation, ebit, interestExpense, taxRate, netProfit, eps, capitalExpenditure, dividendPayment, fc;
+    depreciation, ebit, interestExpense, taxRate, netProfit, eps, capitalExpenditure, dividendPayment, fc, update;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class KeyStats extends android.support.v4.app.Fragment {
         capitalExpenditure = view.findViewById(R.id.capitalExpenditure);
         dividendPayment = view.findViewById(R.id.dividendPayment);
         fc = view.findViewById(R.id.FC);
+        update = view.findViewById(R.id.textUpdate);
         ket.setText(ket.getText()+modelCategory.getUpdated_using());
         beta.setText(String.valueOf(modelCategory.getBeta()));
         currentAsset.setText(modelCategory.getCurrent_asset1());
@@ -53,6 +54,7 @@ public class KeyStats extends android.support.v4.app.Fragment {
         eps.setText(modelCategory.getEps());
         capitalExpenditure.setText(modelCategory.getCapital_expenditure());
         dividendPayment.setText(modelCategory.getDividend_payment());
+        update.setText(update.getText()+modelCategory.getUpdated_at());
         if (modelCategory.getUpdated_using().equals("FCFF")){
             growthRates.setText(modelCategory.getExpected_growth_fcff());
             fc.setText(modelCategory.getFcff());

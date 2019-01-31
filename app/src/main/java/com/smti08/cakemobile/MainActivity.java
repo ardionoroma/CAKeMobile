@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, CategoryActivity.class);
+                i.putExtra("kategori", 0);
+                i.putExtra("judul", "Semua Perusahaan");
                 startActivity(i);
             }
         });
@@ -173,40 +175,58 @@ public class MainActivity extends AppCompatActivity {
         public void onBindViewHolder(viewHolder holder, int position) {
             switch (position){
                 case 0:
-                    holder.teks.setText("Perdagangan");
+                    holder.teks.setText("Pertanian");
                     holder.ikon.setImageResource(R.drawable.perdagangan);
+                    holder.kategori = 1;
+                    holder.judul = (String) holder.teks.getText();
                     break;
                 case 1:
-                    holder.teks.setText("Tambang");
+                    holder.teks.setText("Industri\n&\nKimia");
                     holder.ikon.setImageResource(R.drawable.tambang);
+                    holder.kategori = 2;
+                    holder.judul = (String) holder.teks.getText();
                     break;
                 case 2:
-                    holder.teks.setText("Kimia");
+                    holder.teks.setText("Konsumsi");
                     holder.ikon.setImageResource(R.drawable.kimia);
+                    holder.kategori = 3;
+                    holder.judul = (String) holder.teks.getText();
                     break;
                 case 3:
-                    holder.teks.setText("Industri");
+                    holder.teks.setText("Keuangan");
                     holder.ikon.setImageResource(R.drawable.industri);
+                    holder.kategori = 4;
+                    holder.judul = (String) holder.teks.getText();
                     break;
                 case 4:
-                    holder.teks.setText("Konsumsi");
+                    holder.teks.setText("Infrastruktur");
                     holder.ikon.setImageResource(R.drawable.konsumsi);
+                    holder.kategori = 5;
+                    holder.judul = (String) holder.teks.getText();
                     break;
                 case 5:
-                    holder.teks.setText("Properti");
+                    holder.teks.setText("Tambang");
                     holder.ikon.setImageResource(R.drawable.properti);
+                    holder.kategori = 6;
+                    holder.judul = (String) holder.teks.getText();
                     break;
                 case 6:
-                    holder.teks.setText("Infrastruktur");
+                    holder.teks.setText("Properti");
                     holder.ikon.setImageResource(R.drawable.infrastruktur);
+                    holder.kategori = 8;
+                    holder.judul = (String) holder.teks.getText();
                     break;
                 case 7:
-                    holder.teks.setText("Keuangan");
+                    holder.teks.setText("Perdagangan\n&\nJasa");
                     holder.ikon.setImageResource(R.drawable.keuangan);
+                    holder.kategori = 9;
+                    holder.judul = (String) holder.teks.getText();
                     break;
                 case 8:
-                    holder.teks.setText("Jasa");
+                    holder.teks.setText("Lainnya");
                     holder.ikon.setImageResource(R.drawable.jasa);
+                    holder.kategori = 7;
+                    holder.judul = (String) holder.teks.getText();
                     break;
             }
         }
@@ -220,6 +240,8 @@ public class MainActivity extends AppCompatActivity {
         class viewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             TextView teks;
             ImageView ikon;
+            int kategori;
+            String judul;
 
             public viewHolder(View itemView) {
                 super(itemView);
@@ -231,6 +253,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, CategoryActivity.class);
+                i.putExtra("kategori", kategori);
+                i.putExtra("judul", judul);
                 startActivity(i);
             }
         }

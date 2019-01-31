@@ -573,5 +573,20 @@
                 android:textSize="14sp"
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_margin="5pt"
+            android:paddingLeft="5pt"
+            android:paddingRight="5pt">
+            <TextView
+                android:id="@+id/textUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pembaruan terakhir pada "
+                android:textSize="12sp"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
     </LinearLayout>
 </ScrollView>
